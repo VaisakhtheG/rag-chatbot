@@ -34,9 +34,9 @@ def truncate_context(context_chunks: list[str], max_tokens: int = MAX_CONTEXT_TO
     return combined_context.strip()
 
 def generate_response(user_query: str, retrieved_context: list[str]) -> Generator[str, None, None]:
-    api_key = os.environ.get("GROQ_API_KEY", "")
+    api_key = os.environ.get("RAG_CHATBOT", "")
     if not api_key:
-        yield "Error: GROQ_API_KEY environment variable is not set. Please set it in your environment or Streamlit Secrets."
+        yield "Error: RAG_CHATBOT environment variable is not set. Please set it in your environment or Streamlit Secrets."
         return
 
     try:
