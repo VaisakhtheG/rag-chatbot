@@ -4,7 +4,7 @@ from typing import Generator
 from langchain_groq import ChatGroq
 from langchain_core.messages import HumanMessage, SystemMessage
 
-LLM_MODEL = "llama3-8b-8192" 
+LLM_MODEL = "llama-3.1-8b-instant" 
 MAX_CONTEXT_TOKENS = 6000 
 
 SYSTEM_PROMPT = "You are a helpful assistant. Answer the user's question using ONLY the provided context. If the answer is not in the context, say 'I don't know'."
