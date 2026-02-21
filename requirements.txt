@@ -1,0 +1,12 @@
+langchain
+langchain-community
+langchain-core
+streamlit
+chromadb
+langchain-groq
+langchain-huggingface
+sentence-transformers
+PyPDF2
+pdfplumber
+tiktoken
+pytest
