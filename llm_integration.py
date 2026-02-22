@@ -4,8 +4,8 @@ from typing import Generator
 from langchain_groq import ChatGroq
 from langchain_core.messages import HumanMessage, SystemMessage
 
-LLM_MODEL = "llama-3.1-8b-instant" 
-MAX_CONTEXT_TOKENS = 6000 
+LLM_MODEL = "openai/gpt-oss-120b"
+MAX_CONTEXT_TOKENS = 6000
 
 SYSTEM_PROMPT = "You are a helpful assistant. Answer the user's question using ONLY the provided context. If the answer is not in the context, say 'I don't know'."
 
@@ -40,7 +40,7 @@ def generate_response(user_query: str, retrieved_context: list[str]) -> Generato
         return
 
     try:
-        llm = ChatGroq(model_name=LLM_MODEL, temperature=0, api_key=api_key)
+        llm = ChatGroq(model=LLM_MODEL, temperature=0, api_key=api_key)
     except Exception as e:
         raise LLMIntegrationError(f"Failed to initialize Groq client: {str(e)}")
 
@@ -56,4 +56,4 @@ def generate_response(user_query: str, retrieved_context: list[str]) -> Generato
         for chunk in llm.stream(messages):
             yield chunk.content
     except Exception as e:
-        raise LLMIntegrationError(f"Failed to communicate with Groq: {str(e)}")
+        raise LLMIntegrationError(f"Failed to communicate with LLM: {str(e)}")
